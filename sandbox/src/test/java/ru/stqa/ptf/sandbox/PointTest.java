@@ -9,8 +9,12 @@ public class PointTest {
 
   public void testArea (){
 
-    Point point = new Point(10,10,30,30);
-    Assert.assertEquals(point.disCalculation(), 28.284271247461902);
+    Point p1 = new Point(10, 10);
+    Point p2 = new Point(30, 30);
+
+    double distance = p1.disCalculation(p2);
+
+    Assert.assertEquals((Math.round(distance * 100.0)/100.0), 28.28);
 
   }
 }
