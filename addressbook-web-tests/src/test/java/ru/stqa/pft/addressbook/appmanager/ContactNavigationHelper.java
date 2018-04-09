@@ -33,6 +33,13 @@ public class ContactNavigationHelper extends HelperBase {
     click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
   }
 
+  public void clickOnEdit() {
+    click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+  }
+
+  public void updateEditedContact() {
+    click(By.name("update"));
+  }
 }
 
 
