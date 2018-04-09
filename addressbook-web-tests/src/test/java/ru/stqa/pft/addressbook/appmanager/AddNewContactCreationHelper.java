@@ -3,14 +3,17 @@ package ru.stqa.pft.addressbook.appmanager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
-public class AddNewContactCreationHelper {
-  private FirefoxDriver wd;
+public class AddNewContactCreationHelper extends HelperBase {
+
 
   public AddNewContactCreationHelper(FirefoxDriver wd) {
-    this.wd = wd;
+    super(wd);
   }
 
   public void addNew() {
-    wd.findElement(By.linkText("add new")).click();
+
+    click(By.linkText("add new"));
+
+//    wd.findElement(By.linkText("add new")).click();
   }
 }
