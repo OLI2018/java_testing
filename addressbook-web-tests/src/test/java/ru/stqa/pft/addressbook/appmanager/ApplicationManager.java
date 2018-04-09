@@ -8,7 +8,7 @@ public class ApplicationManager {
 
   FirefoxDriver wd;
 
-  private AddNewContactCreationHelper addNewContactCreationHelper;
+  private ContactNavigationHelper contactNavigationHelper;
   private PrimaryContactsHelper primaryContactsHelper;
   private SecondaryContactsHelper secondaryContactsHelper;
   private SessionHelper sessionHelper;
@@ -25,7 +25,7 @@ public class ApplicationManager {
     sessionHelper = new SessionHelper(wd);
     secondaryContactsHelper= new SecondaryContactsHelper(wd);
     primaryContactsHelper = new PrimaryContactsHelper(wd);
-    addNewContactCreationHelper = new AddNewContactCreationHelper(wd);
+    contactNavigationHelper = new ContactNavigationHelper(wd);
     sessionHelper.login("admin", "secret");
   }
 
@@ -49,7 +49,7 @@ public class ApplicationManager {
     return primaryContactsHelper;
   }
 
-  public AddNewContactCreationHelper getAddNewContactCreationHelper() {
-    return addNewContactCreationHelper;
+  public ContactNavigationHelper getContactNavigationHelper() {
+    return contactNavigationHelper;
   }
 }
