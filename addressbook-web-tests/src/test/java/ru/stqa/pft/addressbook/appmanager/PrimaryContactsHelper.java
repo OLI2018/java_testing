@@ -20,6 +20,7 @@ public class PrimaryContactsHelper extends HelperBase {
 //    wd.findElement(By.name("email")).clear();
 //    wd.findElement(By.name("email")).sendKeys(emailsData.getEmail1());
 
+
     type(By.name("email2"),emailsData.getEmail2());
 
 //    wd.findElement(By.name("email2")).click();
