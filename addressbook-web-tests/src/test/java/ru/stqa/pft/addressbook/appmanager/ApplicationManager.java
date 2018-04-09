@@ -1,15 +1,16 @@
 package ru.stqa.pft.addressbook.appmanager;
 
-import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
-
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
 
   FirefoxDriver wd;
 
+  private AddNewContactCreationHelper addNewContactCreationHelper;
+  private PrimaryContactsHelper primaryContactsHelper;
+  private SecondaryContactsHelper secondaryContactsHelper;
   private SessionHelper sessionHelper;
   private NavigationHelper navigationHelper;
   private GroupHelper groupHelper;
@@ -23,6 +24,9 @@ public class ApplicationManager {
     groupHelper = new GroupHelper(wd);
     navigationHelper = new NavigationHelper(wd);
     sessionHelper = new SessionHelper(wd);
+    secondaryContactsHelper= new SecondaryContactsHelper(wd);
+    primaryContactsHelper = new PrimaryContactsHelper(wd);
+    addNewContactCreationHelper = new AddNewContactCreationHelper(wd);
     sessionHelper.login("admin", "secret");
   }
 
@@ -36,5 +40,17 @@ public class ApplicationManager {
 
   public NavigationHelper getNavigationHelper() {
     return navigationHelper;
+  }
+
+  public SecondaryContactsHelper getSecondaryContactsHelper() {
+    return secondaryContactsHelper;
+  }
+
+  public PrimaryContactsHelper getPrimaryContactsHelper() {
+    return primaryContactsHelper;
+  }
+
+  public AddNewContactCreationHelper getAddNewContactCreationHelper() {
+    return addNewContactCreationHelper;
   }
 }
