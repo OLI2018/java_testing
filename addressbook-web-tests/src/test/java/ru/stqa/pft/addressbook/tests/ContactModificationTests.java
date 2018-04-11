@@ -1,10 +1,7 @@
 package ru.stqa.pft.addressbook.tests;
 
 import org.testng.annotations.Test;
-import ru.stqa.pft.addressbook.model.EmailsData;
-import ru.stqa.pft.addressbook.model.PersonalInfoData;
-import ru.stqa.pft.addressbook.model.PhonesData;
-import ru.stqa.pft.addressbook.model.SecondaryData;
+import ru.stqa.pft.addressbook.model.ContactData;
 
 public class ContactModificationTests extends TestBase {
 
@@ -15,11 +12,9 @@ public class ContactModificationTests extends TestBase {
     app.getContactNavigationHelper().selectContact();
     app.getContactNavigationHelper().clickOnEdit();
 
-    app.getPrimaryContactsHelper().personalInfo(new PersonalInfoData("Bob", "J", "White", "Puppy", "Manager", "SuperCompany", "Somewhere"));
-    app.getPrimaryContactsHelper().phones(new PhonesData("000 000 00 00", "111 111 11 11", "222 222 22 22", "999 999 99 99"));
-    app.getPrimaryContactsHelper().emailsAndHomePage(new EmailsData("firstaemail@gmail.com", "secondemail@gmail.com", "thirdemail@gmail.com", "anotheremail@gmail.com"));
-    app.getSecondaryContactsHelper().secondaryContacts(new SecondaryData("Any Street", "456 789 00 00", "DOGS!!!!"));
-
+    app.getPrimaryContactsHelper().personalInfo(new ContactData("David", "W", "Bush", "N/A", "Manager", "SuperCompany", "Somewhere"));
+    app.getPrimaryContactsHelper().primaryContacts(new ContactData("999 999 99 99", "888 888 88 88", "777 777 77 77", "666 666 66 66", "noemail@noemail.com", "no@email.com", "1234@yahoo.com", "www.nohomepageatall.com"));
+    app.getSecondaryContactsHelper().secondaryContacts(new ContactData("Any Street", "000 000 00 00", "be aware of dogs!"));
     app.getContactNavigationHelper().updateEditedContact();
 
   }

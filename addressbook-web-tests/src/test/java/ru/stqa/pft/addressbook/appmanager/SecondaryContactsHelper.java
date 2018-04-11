@@ -2,7 +2,8 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import ru.stqa.pft.addressbook.model.SecondaryData;
+import ru.stqa.pft.addressbook.model.ContactData;
+
 
 public class SecondaryContactsHelper extends HelperBase {
 
@@ -12,28 +13,19 @@ public class SecondaryContactsHelper extends HelperBase {
 
   }
 
-  public void secondaryContacts(SecondaryData secondaryData) {
+  public void secondaryContacts(ContactData contactData) {
 
-    type(By.name("address2"),secondaryData.getaddress2());
+    type(By.name("address2"), contactData.getaddress2());
 
-//    wd.findElement(By.name("address2")).click();
-//    wd.findElement(By.name("address2")).clear();
-//    wd.findElement(By.name("address2")).sendKeys(secondaryData.getaddress2());
 
-    type(By.name("phone2"),secondaryData.getphone2());
+    type(By.name("phone2"), contactData.getphone2());
 
-//    wd.findElement(By.name("phone2")).click();
-//    wd.findElement(By.name("phone2")).clear();
-//    wd.findElement(By.name("phone2")).sendKeys(secondaryData.getphone2());
 
-    type(By.name("notes"),secondaryData.getnotes());
+    type(By.name("notes"), contactData.getnotes());
 
-//    wd.findElement(By.name("notes")).click();
-//    wd.findElement(By.name("notes")).clear();
-//    wd.findElement(By.name("notes")).sendKeys(secondaryData.getnotes());
 
     click(By.xpath("//div[@id='content']/form/input[21]"));
 
-//    wd.findElement(By.xpath("//div[@id='content']/form/input[21]")).click();
+
   }
 }

@@ -2,9 +2,7 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import ru.stqa.pft.addressbook.model.EmailsData;
-import ru.stqa.pft.addressbook.model.PersonalInfoData;
-import ru.stqa.pft.addressbook.model.PhonesData;
+import ru.stqa.pft.addressbook.model.ContactData;
 
 public class PrimaryContactsHelper extends HelperBase {
 
@@ -12,103 +10,41 @@ public class PrimaryContactsHelper extends HelperBase {
     super(wd);
   }
 
-  public void emailsAndHomePage(EmailsData emailsData) {
+  public void primaryContacts(ContactData contactData) {
 
-    type(By.name("email"), emailsData.getEmail1());
+    type(By.name("email"), contactData.getEmail1());
 
-//    wd.findElement(By.name("email")).click();
-//    wd.findElement(By.name("email")).clear();
-//    wd.findElement(By.name("email")).sendKeys(emailsData.getEmail1());
+    type(By.name("email2"), contactData.getEmail2());
 
+    type(By.name("email3"), contactData.getEmail3());
 
-    type(By.name("email2"),emailsData.getEmail2());
+    type(By.name("homepage"), contactData.getHomePage());
 
-//    wd.findElement(By.name("email2")).click();
-//    wd.findElement(By.name("email2")).clear();
-//    wd.findElement(By.name("email2")).sendKeys(emailsData.getEmail2());
+    type(By.name("home"), contactData.getHome());
 
-    type(By.name("email3"),emailsData.getEmail3());
+    type(By.name("mobile"), contactData.getMobile());
 
-//    wd.findElement(By.name("email3")).click();
-//    wd.findElement(By.name("email3")).clear();
-//    wd.findElement(By.name("email3")).sendKeys(emailsData.getEmail3());
+    type(By.name("work"), contactData.getWork());
 
-    type(By.name("homepage"), emailsData.getHomePage());
+    type(By.name("fax"), contactData.getFax());
 
-//    wd.findElement(By.name("homepage")).click();
-//    wd.findElement(By.name("homepage")).clear();
-//    wd.findElement(By.name("homepage")).sendKeys(emailsData.getHomePage());
   }
 
-  public void phones(PhonesData phonesData) {
+  public void personalInfo(ContactData contactData) {
 
-    type(By.name("home"), phonesData.getHome());
+    type(By.name("firstname"), contactData.getFirstName());
 
-//    wd.findElement(By.name("home")).click();
-//    wd.findElement(By.name("home")).clear();
-//    wd.findElement(By.name("home")).sendKeys(phonesData.getHome());
+    type(By.name("middlename"), contactData.getMiddleName());
 
-    type(By.name("mobile"), phonesData.getMobile());
+    type(By.name("lastname"), contactData.getLastName());
 
-//    wd.findElement(By.name("mobile")).click();
-//    wd.findElement(By.name("mobile")).clear();
-//    wd.findElement(By.name("mobile")).sendKeys(phonesData.getMobile());
+    type(By.name("nickname"), contactData.getNickName());
 
-    type(By.name("work"),phonesData.getWork());
+    type(By.name("title"), contactData.getTitle());
 
-//    wd.findElement(By.name("work")).click();
-//    wd.findElement(By.name("work")).clear();
-//    wd.findElement(By.name("work")).sendKeys(phonesData.getWork());
+    type(By.name("company"), contactData.getCompany());
 
-    type(By.name("fax"),phonesData.getFax());
+    type(By.name("address"), contactData.getAddress());
 
-//    wd.findElement(By.name("fax")).click();
-//    wd.findElement(By.name("fax")).clear();
-//    wd.findElement(By.name("fax")).sendKeys(phonesData.getFax());
-  }
-
-  public void personalInfo(PersonalInfoData personalInfoData) {
-
-    type(By.name("firstname"), personalInfoData.getFirstName());
-
-//    wd.findElement(By.name("firstname")).click();
-//    wd.findElement(By.name("firstname")).clear();
-//    wd.findElement(By.name("firstname")).sendKeys(personalInfoData.getFirstName());
-
-    type(By.name("middlename"), personalInfoData.getMiddleName());
-
-//    wd.findElement(By.name("middlename")).click();
-//    wd.findElement(By.name("middlename")).clear();
-//    wd.findElement(By.name("middlename")).sendKeys(personalInfoData.getMiddleName());
-
-    type(By.name("lastname"),personalInfoData.getLastName());
-
-//    wd.findElement(By.name("lastname")).click();
-//    wd.findElement(By.name("lastname")).clear();
-//    wd.findElement(By.name("lastname")).sendKeys(personalInfoData.getLastName());
-
-    type(By.name("nickname"), personalInfoData.getNickName());
-
-//    wd.findElement(By.name("nickname")).click();
-//    wd.findElement(By.name("nickname")).clear();
-//    wd.findElement(By.name("nickname")).sendKeys(personalInfoData.getNickName());
-
-    type(By.name("title"), personalInfoData.getTitle());
-
-//    wd.findElement(By.name("title")).click();
-//    wd.findElement(By.name("title")).clear();
-//    wd.findElement(By.name("title")).sendKeys(personalInfoData.getTitle());
-
-    type(By.name("company"),personalInfoData.getCompany());
-
-//    wd.findElement(By.name("company")).click();
-//    wd.findElement(By.name("company")).clear();
-//    wd.findElement(By.name("company")).sendKeys(personalInfoData.getCompany());
-
-    type(By.name("address"), personalInfoData.getAddress());
-
-//    wd.findElement(By.name("address")).click();
-//    wd.findElement(By.name("address")).clear();
-//    wd.findElement(By.name("address")).sendKeys(personalInfoData.getAddress());
   }
 }
