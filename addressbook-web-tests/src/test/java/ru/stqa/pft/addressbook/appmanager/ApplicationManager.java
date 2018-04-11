@@ -2,15 +2,14 @@ package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
+
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
 
   FirefoxDriver wd;
 
-  private ContactNavigationHelper contactNavigationHelper;
-  private PrimaryContactsHelper primaryContactsHelper;
-  private SecondaryContactsHelper secondaryContactsHelper;
+  private ContactHelper contactHelper;
   private SessionHelper sessionHelper;
   private NavigationHelper navigationHelper;
   private GroupHelper groupHelper;
@@ -23,9 +22,8 @@ public class ApplicationManager {
     groupHelper = new GroupHelper(wd);
     navigationHelper = new NavigationHelper(wd);
     sessionHelper = new SessionHelper(wd);
-    secondaryContactsHelper= new SecondaryContactsHelper(wd);
-    primaryContactsHelper = new PrimaryContactsHelper(wd);
-    contactNavigationHelper = new ContactNavigationHelper(wd);
+    contactHelper = new ContactHelper(wd);
+
     sessionHelper.login("admin", "secret");
   }
 
@@ -41,15 +39,7 @@ public class ApplicationManager {
     return navigationHelper;
   }
 
-  public SecondaryContactsHelper getSecondaryContactsHelper() {
-    return secondaryContactsHelper;
-  }
-
-  public PrimaryContactsHelper getPrimaryContactsHelper() {
-    return primaryContactsHelper;
-  }
-
-  public ContactNavigationHelper getContactNavigationHelper() {
-    return contactNavigationHelper;
+  public ContactHelper getContactHelper() {
+    return contactHelper;
   }
 }
