@@ -23,9 +23,9 @@ public class ContactHelper extends HelperBase {
 
   }
 
-  public void goHomePage() {
-    click(By.linkText("home"));
-  }
+//  public void gotoHomePage() {
+//    click(By.linkText("home"));
+//  }
 
   public void selectContact() {
     click(By.name("selected[]"));
