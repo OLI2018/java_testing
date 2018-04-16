@@ -23,10 +23,6 @@ public class ContactHelper extends HelperBase {
 
   }
 
-//  public void gotoHomePage() {
-//    click(By.linkText("home"));
-//  }
-
   public void selectContact() {
     click(By.name("selected[]"));
   }
@@ -62,7 +58,7 @@ public class ContactHelper extends HelperBase {
 
     type(By.name("fax"), contactData.getFax());
 
-    if(creation) {
+    if (creation) {
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
 
     } else {
@@ -104,7 +100,33 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("//div[@id='content']/form/input[21]"));
 
   }
+
+
+  public boolean isThereAContact() {
+    return isElementPresent(By.name("selected[]"));
+  }
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
