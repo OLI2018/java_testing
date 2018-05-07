@@ -11,7 +11,7 @@ public class ContactData {
   private String title;
   private String company;
   private String address;
-  private String id;
+  private int id;
 
   private String home;
   private String mobile;
@@ -21,7 +21,7 @@ public class ContactData {
   private String email2;
   private String email3;
 
-  public String getId() {
+  public int getId() {
     return id;
   }
 
@@ -34,28 +34,28 @@ public class ContactData {
   private String notes;
 
   @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    ContactData that = (ContactData) o;
-    return Objects.equals(firstName, that.firstName) &&
-            Objects.equals(lastName, that.lastName) &&
-            Objects.equals(id, that.id);
-  }
-
-  @Override
-  public int hashCode() {
-
-    return Objects.hash(firstName, lastName, id);
-  }
-
-  @Override
   public String toString() {
     return "ContactData{" +
             "firstName='" + firstName + '\'' +
             ", lastName='" + lastName + '\'' +
             ", id='" + id + '\'' +
             '}';
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ContactData that = (ContactData) o;
+    return id == that.id &&
+            Objects.equals(firstName, that.firstName) &&
+            Objects.equals(lastName, that.lastName);
+  }
+
+  @Override
+  public int hashCode() {
+
+    return Objects.hash(firstName, lastName, id);
   }
 
   public ContactData(String firstName, String lastName, String middleName, String nickName, String title, String company, String address) {
@@ -66,10 +66,11 @@ public class ContactData {
     this.title = title;
     this.company = company;
     this.address = address;
-    this.id = null;
+
+    this.id = 0;
   }
 
-  public ContactData(String id, String firstName, String lastName, String middleName, String nickName, String title, String company, String address) {
+  public ContactData(int id, String firstName, String lastName, String middleName, String nickName, String title, String company, String address) {
     this.firstName = firstName;
     this.middleName = middleName;
     this.lastName = lastName;
@@ -122,6 +123,10 @@ public class ContactData {
 
   public String getCompany() {
     return company;
+  }
+
+  public void setId(int id) {
+    this.id = id;
   }
 
   public String getAddress() {
