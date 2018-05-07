@@ -38,8 +38,10 @@ public class ContactHelper extends HelperBase {
     click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
   }
 
-  public void clickOnEdit() {
-    click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+  public void clickOnEdit(int index) {
+//    click(By.xpath("//table[@id='maintable']/tbody/tr[5]/td[8]/a/img"));
+//// need to pick up the bottom line/string here to align IDs
+    wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[" + index + "]/td[8]/a/img")).click();
   }
 
   public void updateEditedContact() {
@@ -117,8 +119,9 @@ public class ContactHelper extends HelperBase {
       List<WebElement> cells = rows.get(i).findElements(By.tagName("td"));
       String firstName = cells.get(2).getText();
       String lastName = cells.get(1).getText();
-      int id = Integer.parseInt(rows.get(i).findElement(By.tagName("input")).getAttribute("value"));
-      ContactData contact = new ContactData(id, firstName, null, lastName, null, null, null, null);
+//      String id = Integer.parseInt(rows.get(i).findElement(By.tagName("input")).getAttribute("value"));
+      String id = rows.get(i).findElement(By.tagName("input")).getAttribute("value");
+      ContactData contact = new ContactData(id, firstName, lastName, null, null, null, null, null);
       contacts.add(contact);
     }
     return contacts;

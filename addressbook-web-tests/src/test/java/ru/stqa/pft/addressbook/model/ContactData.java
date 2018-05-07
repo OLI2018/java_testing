@@ -11,7 +11,7 @@ public class ContactData {
   private String title;
   private String company;
   private String address;
-  private int id;
+  private String id;
 
   private String home;
   private String mobile;
@@ -20,10 +20,18 @@ public class ContactData {
   private String email1;
   private String email2;
   private String email3;
+
+  public String getId() {
+    return id;
+  }
+
   private String homePage;
   private String group;
 
   private String address2;
+
+  private String phone2;
+  private String notes;
 
   @Override
   public boolean equals(Object o) {
@@ -31,27 +39,26 @@ public class ContactData {
     if (o == null || getClass() != o.getClass()) return false;
     ContactData that = (ContactData) o;
     return Objects.equals(firstName, that.firstName) &&
-            Objects.equals(lastName, that.lastName);
+            Objects.equals(lastName, that.lastName) &&
+            Objects.equals(id, that.id);
   }
 
   @Override
   public int hashCode() {
 
-    return Objects.hash(firstName, lastName);
+    return Objects.hash(firstName, lastName, id);
   }
-
-  private String phone2;
-  private String notes;
 
   @Override
   public String toString() {
     return "ContactData{" +
             "firstName='" + firstName + '\'' +
             ", lastName='" + lastName + '\'' +
+            ", id='" + id + '\'' +
             '}';
   }
 
-  public ContactData(String firstName, String middleName, String lastName, String nickName, String title, String company, String address) {
+  public ContactData(String firstName, String lastName, String middleName, String nickName, String title, String company, String address) {
     this.firstName = firstName;
     this.middleName = middleName;
     this.lastName = lastName;
@@ -59,9 +66,10 @@ public class ContactData {
     this.title = title;
     this.company = company;
     this.address = address;
+    this.id = null;
   }
 
-  public ContactData(int id, String firstName, String middleName, String lastName, String nickName, String title, String company, String address) {
+  public ContactData(String id, String firstName, String lastName, String middleName, String nickName, String title, String company, String address) {
     this.firstName = firstName;
     this.middleName = middleName;
     this.lastName = lastName;
