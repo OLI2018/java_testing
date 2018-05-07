@@ -38,7 +38,7 @@ public class GroupCreationTests extends TestBase {
 
 //    Assert.assertEquals(new HashSet<Object>(before), new HashSet<Object>(after));
 
-    Assert.assertEquals(before,after);
+    Assert.assertEquals(before, after);
 
   }
 }
