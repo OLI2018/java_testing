@@ -11,7 +11,7 @@ public class ContactData {
   private String title;
   private String company;
   private String address;
-  private int id;
+  private int id = Integer.MAX_VALUE;
 
   private String home;
   private String mobile;
@@ -57,49 +57,148 @@ public class ContactData {
     return Objects.hash(firstName, lastName);
   }
 
-  public ContactData(String firstName, String lastName, String middleName, String nickName, String title, String company, String address) {
-    this.firstName = firstName;
-    this.middleName = middleName;
-    this.lastName = lastName;
-    this.nickName = nickName;
-    this.title = title;
-    this.company = company;
-    this.address = address;
+//  public ContactData(String firstName, String lastName, String middleName, String nickName, String title, String company, String address) {
+//    this.firstName = firstName;
+//    this.middleName = middleName;
+//    this.lastName = lastName;
+//    this.nickName = nickName;
+//    this.title = title;
+//    this.company = company;
+//    this.address = address;
+//    this.id = Integer.MAX_VALUE;
+//
+//  }
 
-    this.id = Integer.MAX_VALUE;
+//  public ContactData(int id, String firstName, String lastName, String middleName, String nickName, String title, String company, String address) {
+//    this.firstName = firstName;
+//    this.middleName = middleName;
+//    this.lastName = lastName;
+//    this.nickName = nickName;
+//    this.title = title;
+//    this.company = company;
+//    this.address = address;
+//    this.id = id;
+//  }
 
-  }
-
-  public ContactData(int id, String firstName, String lastName, String middleName, String nickName, String title, String company, String address) {
-    this.firstName = firstName;
-    this.middleName = middleName;
-    this.lastName = lastName;
-    this.nickName = nickName;
-    this.title = title;
-    this.company = company;
-    this.address = address;
+  public ContactData withId (int id) {
     this.id = id;
+    return this;
   }
 
 
-  public ContactData(String home, String mobile, String work, String fax, String email1, String email2, String email3, String homePage, String group) {
+  public ContactData withFirstName(String firstName) {
+    this.firstName = firstName;
+    return this;
+  }
+
+  public ContactData withMiddleName(String middleName) {
+    this.middleName = middleName;
+    return this;
+  }
+
+  public ContactData withLastName(String lastName) {
+    this.lastName = lastName;
+    return this;
+  }
+
+  public ContactData withNickName(String nickName) {
+    this.nickName = nickName;
+    return this;
+  }
+
+  public ContactData withTitle(String title) {
+    this.title = title;
+    return this;
+  }
+
+  public ContactData withCompany(String company) {
+    this.company = company;
+    return this;
+  }
+
+  public ContactData withAddress(String address) {
+    this.address = address;
+    return this;
+  }
+
+  public ContactData withHome(String home) {
     this.home = home;
+    return this;
+  }
+
+  public ContactData withMobile(String mobile) {
     this.mobile = mobile;
+    return this;
+  }
+
+  public ContactData withWork(String work) {
     this.work = work;
+    return this;
+  }
+
+  public ContactData withFax(String fax) {
     this.fax = fax;
+    return this;
+  }
+
+  public ContactData withEmail1(String email1) {
     this.email1 = email1;
+    return this;
+  }
+
+  public ContactData withEmail2(String email2) {
     this.email2 = email2;
+    return this;
+  }
+
+  public ContactData withEmail3(String email3) {
     this.email3 = email3;
+    return this;
+  }
+
+  public ContactData withHomePage(String homePage) {
     this.homePage = homePage;
+    return this;
+  }
 
+  public ContactData withGroup(String group) {
     this.group = group;
+    return this;
   }
 
-  public ContactData(String address2, String phone2, String notes) {
+  public ContactData withAddress2(String address2) {
     this.address2 = address2;
-    this.phone2 = phone2;
-    this.notes = notes;
+    return this;
   }
+
+  public ContactData withPhone2(String phone2) {
+    this.phone2 = phone2;
+    return this;
+  }
+
+  public ContactData withNotes(String notes) {
+    this.notes = notes;
+    return this;
+  }
+
+
+//  public ContactData(String home, String mobile, String work, String fax, String email1, String email2, String email3, String homePage, String group) {
+//    this.home = home;
+//    this.mobile = mobile;
+//    this.work = work;
+//    this.fax = fax;
+//    this.email1 = email1;
+//    this.email2 = email2;
+//    this.email3 = email3;
+//    this.homePage = homePage;
+//    this.group = group;
+//  }
+//
+//  public ContactData(String address2, String phone2, String notes) {
+//    this.address2 = address2;
+//    this.phone2 = phone2;
+//    this.notes = notes;
+//  }
 
   public String getFirstName() {
     return firstName;
