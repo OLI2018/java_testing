@@ -34,6 +34,7 @@ public class ContactDeletionTests extends TestBase {
     Set<ContactData> before = app.contact().all();
     ContactData deletedContact = before.iterator().next();
 
+
 //    int index = before.size() - 1;
 
     app.contact().delete(deletedContact);

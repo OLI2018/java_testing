@@ -31,25 +31,28 @@ public class ContactModificationTests extends TestBase {
   @Test
   public void testContactModification() {
 
+
     List<ContactData> before = app.contact().list();
     int index = before.size() - 1;
 
-    app.contact().selectContact(index);
-    app.contact().clickOnEdit(before.size() + 1);
+    app.contact().modifyTest(index);
+
     ContactData contact = new ContactData()
-            .withId(before.get(index).getId()).withFirstName("oooo").withLastName("ppppp")
-            .withMiddleName("iiii").withNickName("N/A").withTitle("Manager")
-            .withCompany("SuperCompany").withAddress("Somewhere");
+            .withId(before.get(index).getId()).withFirstName("sssss").withLastName("ssssssss")
+            .withMiddleName("sssssss").withNickName("sssss/A").withTitle("ssss")
+            .withCompany("sssss").withAddress("sssss");
 
     app.contact().personalInfo(contact);
-    app.contact().primaryContacts(new ContactData().withHome("999 999 99 99")
-            .withMobile("888 888 88 88").withWork("777 777 77 77").withFax("666 666 66 66").withEmail1("noemail@noemail.com")
-            .withEmail2("no@email.com").withEmail3("1234@yahoo.com").withHomePage("www.nohomepageatall.com"), false);
+
+    app.contact().primaryContacts(new ContactData().withHome("0000000000000")
+            .withMobile("0000000000000").withWork("0000000000000").withFax("0000000000000").withEmail1("0000000000000")
+            .withEmail2("0000000000000").withEmail3("0000000000000").withHomePage("0000000000000"), false);
 
     app.contact().secondaryContacts(new ContactData()
-            .withAddress2("Any Street").withPhone2("000 000 00 00").withNotes("be aware of dogs!"));
+            .withAddress2("zzzzzzzz").withPhone2("zzzzzzzz").withNotes("zzzzzzzz"));
 
     app.contact().updateEditedContact();
+
     List<ContactData> after = app.contact().list();
     Assert.assertEquals(after.size(), before.size());
     before.remove(index);
@@ -58,5 +61,7 @@ public class ContactModificationTests extends TestBase {
     before.sort(byId);
     after.sort(byId);
     Assert.assertEquals(before, after);
+
   }
+
 }
