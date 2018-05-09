@@ -28,20 +28,28 @@ public class ContactHelper extends HelperBase {
 
   }
 
+  public void delete(int index) {
+    selectContact(index);
+    deleteContact();
+    clickOnAlert();
+
+  }
+
+
+
   public void selectContact(int index) {
-//    wd.findElements(By.name("selected[]")).get(index).click();
+
     wd.findElements(By.name("selected[]")).get(index).click();
-//    click(By.name("selected[]"));
+
   }
 
   public void deleteContact() {
     click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
   }
 
-  public void clickOnEdit(int index) {
-//    click(By.xpath("//table[@id='maintable']/tbody/tr[5]/td[8]/a/img"));
-//// need to pick up the bottom line/string here to align IDs
-    wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[" + index + "]/td[8]/a/img")).click();
+  public void clickOnEdit(int index1) {
+
+    wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[" + index1 + "]/td[8]/a/img")).click();
   }
 
   public void updateEditedContact() {
