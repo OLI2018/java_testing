@@ -25,13 +25,10 @@ public class ContactHelper extends HelperBase {
   public void addNew() {
 
     click(By.linkText("add new"));
-
   }
 
   public void selectContact(int index) {
-
     wd.findElements(By.name("selected[]")).get(index).click();
-
   }
 
   public void deleteContact() {
@@ -39,7 +36,6 @@ public class ContactHelper extends HelperBase {
   }
 
   public void clickOnEdit(int index) {
-
     int increaseIndex = index + 2;
     wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[" + increaseIndex + "]/td[8]/a/img")).click();
   }
@@ -47,7 +43,6 @@ public class ContactHelper extends HelperBase {
   public void updateEditedContact() {
     click(By.name("update"));
   }
-
 
   public void primaryContacts(ContactData contactData, boolean creation) {
 
@@ -110,23 +105,7 @@ public class ContactHelper extends HelperBase {
     return isElementPresent(By.name("selected[]"));
   }
 
-  public List<ContactData> list() {
-
-    List<ContactData> contacts = new ArrayList<ContactData>();
-    WebElement htmltable = wd.findElement(By.xpath("//*[@id=\"maintable\"]"));
-    List<WebElement> rows = htmltable.findElements(By.tagName("tr"));
-    for (int i = 1; i < rows.size(); i++) {
-      List<WebElement> cells = rows.get(i).findElements(By.tagName("td"));
-      String firstName = cells.get(2).getText();
-      String lastName = cells.get(1).getText();
-      int id = Integer.parseInt(rows.get(i).findElement(By.tagName("input")).getAttribute("value"));
-      contacts.add(new ContactData().withId(id).withFirstName(firstName).withLastName(lastName));
-    }
-    return contacts;
-  }
-
   public Set<ContactData> all() {
-
     Set <ContactData> contacts = new HashSet<ContactData>();
     WebElement htmltable = wd.findElement(By.xpath("//*[@id=\"maintable\"]"));
     List<WebElement> rows = htmltable.findElements(By.tagName("tr"));
@@ -140,14 +119,6 @@ public class ContactHelper extends HelperBase {
     return contacts;
   }
 
-  //////////////////////////////////////////////////
-  public void delete(int index) {
-    selectContact(index);
-    deleteContact();
-    clickOnAlert();
-///////////////////////////////////////////
-  }
-
   public void delete(ContactData contact) {
     selectContactById (contact.getId());
     deleteContact();
@@ -155,26 +126,18 @@ public class ContactHelper extends HelperBase {
   }
 
   public void selectContactById (int id) {
-
     wd.findElement (By.cssSelector("input[value='"+ id + "'")).click();
-
   }
 
 
-  public void modifyTest(int index) {
-    selectContact(index);
-    clickOnEdit(index);
-
-
-
-
-
+  public void modifyTest(ContactData contact) {
+    selectContactById(contact.getId());
+    clickOnEditById (contact.getId());
   }
 
-
-
-
-
+  public void clickOnEditById (int id) {
+    wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr/td/input[@value='"+ id+ "']/../../td[8]/a/img")).click();
+  }
 }
 
 

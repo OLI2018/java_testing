@@ -20,6 +20,11 @@ public class ContactData {
   private String email1;
   private String email2;
   private String email3;
+  private String homePage;
+  private String group;
+  private String address2;
+  private String phone2;
+  private String notes;
 
   @Override
   public boolean equals(Object o) {
@@ -41,13 +46,9 @@ public class ContactData {
     return id;
   }
 
-  private String homePage;
-  private String group;
-
-  private String address2;
-
-  private String phone2;
-  private String notes;
+  public void setId(int id) {
+    this.id = id;
+  }
 
   @Override
   public String toString() {
@@ -58,34 +59,10 @@ public class ContactData {
             '}';
   }
 
-  //  public ContactData(String firstName, String lastName, String middleName, String nickName, String title, String company, String address) {
-//    this.firstName = firstName;
-//    this.middleName = middleName;
-//    this.lastName = lastName;
-//    this.nickName = nickName;
-//    this.title = title;
-//    this.company = company;
-//    this.address = address;
-//    this.id = Integer.MAX_VALUE;
-//
-//  }
-
-//  public ContactData(int id, String firstName, String lastName, String middleName, String nickName, String title, String company, String address) {
-//    this.firstName = firstName;
-//    this.middleName = middleName;
-//    this.lastName = lastName;
-//    this.nickName = nickName;
-//    this.title = title;
-//    this.company = company;
-//    this.address = address;
-//    this.id = id;
-//  }
-
   public ContactData withId (int id) {
     this.id = id;
     return this;
   }
-
 
   public ContactData withFirstName(String firstName) {
     this.firstName = firstName;
@@ -182,25 +159,6 @@ public class ContactData {
     return this;
   }
 
-
-//  public ContactData(String home, String mobile, String work, String fax, String email1, String email2, String email3, String homePage, String group) {
-//    this.home = home;
-//    this.mobile = mobile;
-//    this.work = work;
-//    this.fax = fax;
-//    this.email1 = email1;
-//    this.email2 = email2;
-//    this.email3 = email3;
-//    this.homePage = homePage;
-//    this.group = group;
-//  }
-//
-//  public ContactData(String address2, String phone2, String notes) {
-//    this.address2 = address2;
-//    this.phone2 = phone2;
-//    this.notes = notes;
-//  }
-
   public String getFirstName() {
     return firstName;
   }
@@ -223,10 +181,6 @@ public class ContactData {
 
   public String getCompany() {
     return company;
-  }
-
-  public void setId(int id) {
-    this.id = id;
   }
 
   public String getAddress() {
