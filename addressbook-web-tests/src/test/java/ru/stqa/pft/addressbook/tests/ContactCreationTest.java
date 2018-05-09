@@ -6,13 +6,14 @@ import ru.stqa.pft.addressbook.model.ContactData;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 
 public class ContactCreationTest extends TestBase {
 
   @Test
   public void testContactCreationTest() {
 
-    List<ContactData> before = app.contact().list();
+    Set<ContactData> before = app.contact().all();
 
     app.contact().addNew();
     ContactData contact = new ContactData()
@@ -28,13 +29,15 @@ public class ContactCreationTest extends TestBase {
     app.contact().secondaryContacts(new ContactData()
             .withAddress2("new nowhere").withPhone2("741 741 14 14").withNotes("dont ring"));
 
-    List<ContactData> after = app.contact().list();
+    Set<ContactData> after = app.contact().all();
     Assert.assertEquals(after.size(), before.size() + 1);
 
+    contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt());
+
     before.add(contact);
-    Comparator<? super ContactData> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
-    before.sort(byId);
-    after.sort(byId);
+//    Comparator<? super ContactData> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
+//    before.sort(byId);
+//    after.sort(byId);
     Assert.assertEquals(before, after);
   }
 }
