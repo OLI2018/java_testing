@@ -110,7 +110,7 @@ public class ContactHelper extends HelperBase {
     return isElementPresent(By.name("selected[]"));
   }
 
-  public List<ContactData> getContactList() {
+  public List<ContactData> list() {
 
     List<ContactData> contacts = new ArrayList<ContactData>();
     WebElement htmltable = wd.findElement(By.xpath("//*[@id=\"maintable\"]"));
@@ -119,7 +119,6 @@ public class ContactHelper extends HelperBase {
       List<WebElement> cells = rows.get(i).findElements(By.tagName("td"));
       String firstName = cells.get(2).getText();
       String lastName = cells.get(1).getText();
-//      String id = Integer.parseInt(rows.get(i).findElement(By.tagName("input")).getAttribute("value"));
       int id = Integer.parseInt(rows.get(i).findElement(By.tagName("input")).getAttribute("value"));
       ContactData contact = new ContactData(id, firstName, lastName, null, null, null, null, null);
       contacts.add(contact);
