@@ -1,5 +1,6 @@
 package ru.stqa.pft.addressbook.tests;
 
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 
@@ -11,9 +12,28 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContactInfoTests extends TestBase {
 
+
+  @BeforeMethod
+  public void ensurePreconditionsContactInfoTest() {
+    app.goTo().gotoHomePage();
+    if (app.contact().all().size() == 0) {
+      app.contact().addNew();
+      app.contact().personalInfo(new ContactData()
+              .withFirstName("David").withLastName("Gross").withMiddleName("Jr")
+              .withNickName("Dave").withTitle("Mini Super").withCompany("Super Company")
+              .withAddress("1234 200th WE apt123 City"));
+      app.contact().primaryContacts(new ContactData()
+              .withHomePhone("1111111111").withMobilePhone("2222222222").withWorkPhone("3333333333")
+              .withFax("4444444444").withEmail_1("test@test.com").withEmail_2("protest@protest.com")
+              .withEmail_3("tester@tester.com").withHomePage("www.tester.com").withGroup("test1"), true);
+      app.contact().secondaryContacts(new ContactData()
+              .withAddress2("new nowhere").withPhone2(null).withNotes("no trespassing"));
+    }
+  }
+
   @Test
   public void testContactPhones() {
-    app.goTo().gotoHomePage();
+
     ContactData contact = app.contact().all().iterator().next();
     ContactData contactInfoFromEditForm = app.contact().infoFormEditForm(contact);
     assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromEditForm)));
@@ -33,7 +53,6 @@ public class ContactInfoTests extends TestBase {
   @Test
   public void testContactEmails() {
 
-    app.goTo().gotoHomePage();
     ContactData contact = app.contact().all().iterator().next();
     ContactData contactInfoFromEditForm = app.contact().infoFormEditForm(contact);
     assertThat(contact.getAllEmails(), equalTo(mergeEmails(contactInfoFromEditForm)));
@@ -48,41 +67,10 @@ public class ContactInfoTests extends TestBase {
   @Test
   public void testContactAddress() {
 
-    app.goTo().gotoHomePage();
     ContactData contact = app.contact().all().iterator().next();
     ContactData contactInfoFromEditForm = app.contact().infoFormEditForm(contact);
-
     assertThat(contact.getAddressContact(), equalTo(contactInfoFromEditForm.getAddressContact()));
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
