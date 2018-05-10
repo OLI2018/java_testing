@@ -112,11 +112,12 @@ public class ContactHelper extends HelperBase {
       String firstName = cells.get(2).getText();
       String lastName = cells.get(1).getText();
       int id = Integer.parseInt(rows.get(i).findElement(By.tagName("input")).getAttribute("value"));
-//      String[] phones = cells.get(5).getText().split("\n");
       String allPhones = cells.get(5).getText();
+      String allEmails = cells.get(4).getText();
+      String allAddress = cells.get(3).getText();
       contacts.add(new ContactData()
               .withId(id).withFirstName(firstName).withLastName(lastName)
-              .withAllPhones(allPhones));
+              .withAllPhones(allPhones).withAllEmails(allEmails).withAddressContact(allAddress));
     }
     return contacts;
   }
@@ -143,19 +144,30 @@ public class ContactHelper extends HelperBase {
 
   public ContactData infoFormEditForm(ContactData contact) {
 
-    initContactModificationById (contact.getId());
+    initContactModificationById(contact.getId());
     String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
     String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
     String home = wd.findElement(By.name("home")).getAttribute("value");
     String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
     String work = wd.findElement(By.name("work")).getAttribute("value");
+
+    String email_1 = wd.findElement(By.name("email")).getAttribute("value");
+    String email_2 = wd.findElement(By.name("email2")).getAttribute("value");
+    String email_3 = wd.findElement(By.name("email3")).getAttribute("value");
+
+    String addressContact = wd.findElement(By.name("address")).getText();
+
     wd.navigate().back();
-    return new ContactData().withId(contact.getId()).withFirstName(firstname).withLastName(lastname).withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work);
+    return new ContactData()
+            .withId(contact.getId()).withFirstName(firstname).withLastName(lastname)
+            .withHomePhone(home).withMobilePhone(mobile).withWorkPhone(work)
+            .withEmail_1(email_1).withEmail_2(email_2).withEmail_3(email_3)
+            .withAddressContact(addressContact);
   }
 
   private void initContactModificationById(int id) {
 
-    WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='%s']",id)));
+    WebElement checkbox = wd.findElement(By.cssSelector(String.format("input[value='%s']", id)));
     WebElement row = checkbox.findElement(By.xpath("./../.."));
     List<WebElement> cells = row.findElements(By.tagName("td"));
     cells.get(7).findElement(By.tagName("a")).click();

@@ -14,6 +14,8 @@ public class ContactData {
   private int id = Integer.MAX_VALUE;
 
   private String allPhones;
+  private String allEmails;
+  private String addressContact;
 
   private String home;
   private String mobile;
@@ -241,10 +243,29 @@ public class ContactData {
     return allPhones;
   }
 
+  public String getAllEmails() {
+    return allEmails;
+  }
+
   public ContactData withAllPhones(String allPhones) {
     this.allPhones = allPhones;
     return this;
   }
+
+  public ContactData withAllEmails(String allEmails) {
+    this.allEmails = allEmails;
+    return this;
+  }
+
+  public String getAddressContact() {
+    return addressContact;
+  }
+
+  public ContactData withAddressContact(String addressContact) {
+    this.addressContact = addressContact;
+    return this;
+  }
+
 }
 
 
