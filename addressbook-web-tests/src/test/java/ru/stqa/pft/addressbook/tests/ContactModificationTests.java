@@ -27,7 +27,7 @@ public class ContactModificationTests extends TestBase {
               .withEmail_3("mail3@tester.com").withHomePage("www.tester.com").withGroup("test1"), true);
 
       app.contact().secondaryContacts(new ContactData()
-              .withAddress2("Moscow").withPhone2("5556667788").withNotes("Super Buzzyyyyy"));
+              .withAddress2("Moscow").withPhone2(null).withNotes("Super Buzzyyyyy"));
     }
   }
 
@@ -47,7 +47,7 @@ public class ContactModificationTests extends TestBase {
             .withFax("8888888888").withEmail_1("mail_1@mail.com").withEmail_2("mail_2@mail.com")
             .withEmail_3("mail_3@mail.com").withHomePage("NoPage"), false);
     app.contact().secondaryContacts(new ContactData()
-            .withAddress2("NoWhere").withPhone2("1234567890").withNotes("Out of order"));
+            .withAddress2("NoWhere").withPhone2(null).withNotes("Out of order"));
     app.contact().updateEditedContact();
     Contacts after = app.contact().all();
     assertEquals(after.size(), before.size());

@@ -25,7 +25,7 @@ public class ContactDeletionTests extends TestBase {
              .withFax("4444444444").withEmail_1("test@test.com").withEmail_2("protest@protest.com")
              .withEmail_3("tester@tester.com").withHomePage("www.tester.com").withGroup("test1"), true);
       app.contact().secondaryContacts(new ContactData()
-              .withAddress2("new nowhere").withPhone2("6666666666").withNotes("no trespassing"));
+              .withAddress2("new nowhere").withPhone2(null).withNotes("no trespassing"));
     }
   }
 

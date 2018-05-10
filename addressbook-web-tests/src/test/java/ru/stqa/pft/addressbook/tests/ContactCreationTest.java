@@ -24,7 +24,7 @@ public class ContactCreationTest extends TestBase {
             .withFax("444 444 44 44").withEmail_1("test@test.com").withEmail_2("protest@protest.com")
             .withEmail_3("tester@tester.com").withHomePage("www.tester.com").withGroup("test1"), true);
     app.contact().secondaryContacts(new ContactData()
-            .withAddress2("new nowhere").withPhone2("666 666 66 66").withNotes("no trespassing"));
+            .withAddress2("new nowhere").withPhone2(null).withNotes("no trespassing"));
     Contacts after = app.contact().all();
     assertThat(after.size(), equalTo(before.size() + 1));
     assertThat(after, equalTo(
