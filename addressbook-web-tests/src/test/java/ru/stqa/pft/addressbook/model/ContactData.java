@@ -99,17 +99,17 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withHome(String home) {
+  public ContactData withHomePhone(String home) {
     this.home = home;
     return this;
   }
 
-  public ContactData withMobile(String mobile) {
+  public ContactData withMobilePhone(String mobile) {
     this.mobile = mobile;
     return this;
   }
 
-  public ContactData withWork(String work) {
+  public ContactData withWorkPhone(String work) {
     this.work = work;
     return this;
   }
@@ -119,17 +119,17 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withEmail1(String email1) {
+  public ContactData withEmail_1(String email1) {
     this.email1 = email1;
     return this;
   }
 
-  public ContactData withEmail2(String email2) {
+  public ContactData withEmail_2(String email2) {
     this.email2 = email2;
     return this;
   }
 
-  public ContactData withEmail3(String email3) {
+  public ContactData withEmail_3(String email3) {
     this.email3 = email3;
     return this;
   }

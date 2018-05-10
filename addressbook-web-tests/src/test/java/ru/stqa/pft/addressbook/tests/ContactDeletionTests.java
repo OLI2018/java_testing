@@ -21,11 +21,11 @@ public class ContactDeletionTests extends TestBase {
               .withNickName("Dave").withTitle("Mini Super").withCompany("Super Company")
               .withAddress("1234 200th WE apt123 City"));
      app.contact().primaryContacts(new ContactData()
-             .withHome("111 111 11 11").withMobile("222 222 22 22").withWork("333 333 33 33")
-             .withFax("444 444 44 44").withEmail1("test@test.com").withEmail2("protest@protest.com")
-             .withEmail3("tester@tester.com").withHomePage("www.tester.com").withGroup("test1"), true);
+             .withHomePhone("1111111111").withMobilePhone("2222222222").withWorkPhone("3333333333")
+             .withFax("4444444444").withEmail_1("test@test.com").withEmail_2("protest@protest.com")
+             .withEmail_3("tester@tester.com").withHomePage("www.tester.com").withGroup("test1"), true);
       app.contact().secondaryContacts(new ContactData()
-              .withAddress2("new nowhere").withPhone2("666 666 66 66").withNotes("no trespassing"));
+              .withAddress2("new nowhere").withPhone2("6666666666").withNotes("no trespassing"));
     }
   }
 

@@ -22,12 +22,12 @@ public class ContactModificationTests extends TestBase {
               .withAddress("0987 123 St W Road Town"));
 
       app.contact().primaryContacts(new ContactData()
-              .withHome("444 444 44 44").withMobile("666 666 66 66").withWork("888 888 88 88")
-              .withFax("000 000 00 00").withEmail1("mail1@test.com").withEmail2("mail2t@protest.com")
-              .withEmail3("mail3@tester.com").withHomePage("www.tester.com").withGroup("test1"), true);
+              .withHomePhone("4444444444").withMobilePhone("6666666666").withWorkPhone("8888888888")
+              .withFax("0000000000").withEmail_1("mail1@test.com").withEmail_2("mail2t@protest.com")
+              .withEmail_3("mail3@tester.com").withHomePage("www.tester.com").withGroup("test1"), true);
 
       app.contact().secondaryContacts(new ContactData()
-              .withAddress2("Moscow").withPhone2("555 666 77 88").withNotes("Super Buzzyyyyy"));
+              .withAddress2("Moscow").withPhone2("5556667788").withNotes("Super Buzzyyyyy"));
     }
   }
 
@@ -43,11 +43,11 @@ public class ContactModificationTests extends TestBase {
     app.contact().modifyTest(contact);
     app.contact().personalInfo(contact);
     app.contact().primaryContacts(new ContactData()
-            .withHome("888 888 88 88").withMobile("888 888 88 88").withWork("888 888 88 88")
-            .withFax("888 888 88 88").withEmail1("mail_1@mail.com").withEmail2("mail_2@mail.com")
-            .withEmail3("mail_3@mail.com").withHomePage("NoPage"), false);
+            .withHomePhone("8888888888").withMobilePhone("8888888888").withWorkPhone("8888888888")
+            .withFax("8888888888").withEmail_1("mail_1@mail.com").withEmail_2("mail_2@mail.com")
+            .withEmail_3("mail_3@mail.com").withHomePage("NoPage"), false);
     app.contact().secondaryContacts(new ContactData()
-            .withAddress2("NoWhere").withPhone2("123 456 78 90").withNotes("Out of order"));
+            .withAddress2("NoWhere").withPhone2("1234567890").withNotes("Out of order"));
     app.contact().updateEditedContact();
     Contacts after = app.contact().all();
     assertEquals(after.size(), before.size());
