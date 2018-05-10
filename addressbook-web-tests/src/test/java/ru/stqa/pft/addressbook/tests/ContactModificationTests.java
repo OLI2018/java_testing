@@ -1,11 +1,13 @@
 package ru.stqa.pft.addressbook.tests;
 
-import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.Contacts;
 
-import java.util.Set;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.testng.Assert.assertEquals;
 
 public class ContactModificationTests extends TestBase {
 
@@ -15,42 +17,40 @@ public class ContactModificationTests extends TestBase {
     if (app.contact().all().size() == 0) {
       app.contact().addNew();
       app.contact().personalInfo(new ContactData()
-              .withFirstName("qwert").withLastName("ddd").withMiddleName("fff")
-              .withNickName("gg").withTitle("QA Engineer").withCompany("XYZ Company")
-              .withAddress("Somewhere"));
+              .withFirstName("Bob").withLastName("Logan").withMiddleName("V")
+              .withNickName("BigB").withTitle("No Title").withCompany("remote position")
+              .withAddress("0987 123 St W Road Town"));
 
       app.contact().primaryContacts(new ContactData()
-              .withHome("123 123 11 11").withMobile("456 456 56 56").withWork("789 789 99 99")
-              .withFax("369 369 69 69").withEmail1("test@test.com").withEmail2("protest@protest.com")
-              .withEmail3("tester@tester.com").withHomePage("www.tester.com").withGroup("test1"), true);
+              .withHome("444 444 44 44").withMobile("666 666 66 66").withWork("888 888 88 88")
+              .withFax("000 000 00 00").withEmail1("mail1@test.com").withEmail2("mail2t@protest.com")
+              .withEmail3("mail3@tester.com").withHomePage("www.tester.com").withGroup("test1"), true);
 
       app.contact().secondaryContacts(new ContactData()
-              .withAddress2("new nowhere").withPhone2("741 741 14 14").withNotes("don't ring"));
+              .withAddress2("Moscow").withPhone2("555 666 77 88").withNotes("Super Buzzyyyyy"));
     }
   }
 
   @Test
   public void testContactModification() {
 
-    Set<ContactData> before = app.contact().all();
+    Contacts before = app.contact().all();
     ContactData modifiedContact = before.iterator().next();
     ContactData contact = new ContactData()
-            .withId(modifiedContact.getId()).withFirstName("sssss").withLastName("ssssssss")
-            .withMiddleName("sssssss").withNickName("sssss/A").withTitle("ssss")
-            .withCompany("sssss").withAddress("sssss");
+            .withId(modifiedContact.getId()).withFirstName("Tom").withLastName("Ross")
+            .withMiddleName("Wally").withNickName("Rose").withTitle("VP")
+            .withCompany("NoName").withAddress("NoAddress");
     app.contact().modifyTest(contact);
     app.contact().personalInfo(contact);
     app.contact().primaryContacts(new ContactData()
-            .withHome("0000000000000").withMobile("0000000000000").withWork("0000000000000")
-            .withFax("0000000000000").withEmail1("0000000000000").withEmail2("0000000000000")
-            .withEmail3("0000000000000").withHomePage("0000000000000"), false);
+            .withHome("888 888 88 88").withMobile("888 888 88 88").withWork("888 888 88 88")
+            .withFax("888 888 88 88").withEmail1("mail_1@mail.com").withEmail2("mail_2@mail.com")
+            .withEmail3("mail_3@mail.com").withHomePage("NoPage"), false);
     app.contact().secondaryContacts(new ContactData()
-            .withAddress2("zzzzzzzz").withPhone2("zzzzzzzz").withNotes("zzzzzzzz"));
+            .withAddress2("NoWhere").withPhone2("123 456 78 90").withNotes("Out of order"));
     app.contact().updateEditedContact();
-    Set<ContactData> after = app.contact().all();
-    Assert.assertEquals(after.size(), before.size());
-    before.remove(modifiedContact);
-    before.add(contact);
-    Assert.assertEquals(before, after);
+    Contacts after = app.contact().all();
+    assertEquals(after.size(), before.size());
+    assertThat(after, equalTo(before.without(modifiedContact).withAdded(contact)));
   }
 }

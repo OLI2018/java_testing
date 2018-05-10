@@ -6,11 +6,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.Contacts;
 
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class ContactHelper extends HelperBase {
 
@@ -105,8 +103,8 @@ public class ContactHelper extends HelperBase {
     return isElementPresent(By.name("selected[]"));
   }
 
-  public Set<ContactData> all() {
-    Set <ContactData> contacts = new HashSet<ContactData>();
+  public Contacts all() {
+    Contacts contacts = new Contacts();
     WebElement htmltable = wd.findElement(By.xpath("//*[@id=\"maintable\"]"));
     List<WebElement> rows = htmltable.findElements(By.tagName("tr"));
     for (int i = 1; i < rows.size(); i++) {
@@ -120,23 +118,23 @@ public class ContactHelper extends HelperBase {
   }
 
   public void delete(ContactData contact) {
-    selectContactById (contact.getId());
+    selectContactById(contact.getId());
     deleteContact();
     clickOnAlert();
   }
 
-  public void selectContactById (int id) {
-    wd.findElement (By.cssSelector("input[value='"+ id + "'")).click();
+  public void selectContactById(int id) {
+    wd.findElement(By.cssSelector("input[value='" + id + "'")).click();
   }
 
 
   public void modifyTest(ContactData contact) {
     selectContactById(contact.getId());
-    clickOnEditById (contact.getId());
+    clickOnEditById(contact.getId());
   }
 
-  public void clickOnEditById (int id) {
-    wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr/td/input[@value='"+ id+ "']/../../td[8]/a/img")).click();
+  public void clickOnEditById(int id) {
+    wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr/td/input[@value='" + id + "']/../../td[8]/a/img")).click();
   }
 }
 

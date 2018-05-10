@@ -7,7 +7,6 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.BrowserType;
 
-import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class ApplicationManager {
@@ -24,7 +23,6 @@ public class ApplicationManager {
     this.browser = browser;
   }
 
-
   public void init() {
 
     if (browser.equals(BrowserType.FIREFOX)) {
@@ -34,7 +32,6 @@ public class ApplicationManager {
     } else if (browser.equals(BrowserType.IE)) {
       wd = new InternetExplorerDriver();
     }
-
 
     wd.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     wd.get("http://localhost/addressbook/");

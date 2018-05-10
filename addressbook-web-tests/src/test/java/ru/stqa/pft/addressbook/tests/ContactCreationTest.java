@@ -1,33 +1,33 @@
 package ru.stqa.pft.addressbook.tests;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.Contacts;
 
-import java.util.Set;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContactCreationTest extends TestBase {
 
   @Test
   public void testContactCreationTest() {
 
-    Set<ContactData> before = app.contact().all();
+    Contacts before = app.contact().all();
     app.contact().addNew();
     ContactData contact = new ContactData()
-            .withFirstName("first").withLastName("last").withMiddleName("middle")
-            .withNickName("nick").withTitle("QA Engineer").withCompany("XYZ Company")
-            .withAddress("Somewhere");
+            .withFirstName("David").withLastName("Gross").withMiddleName("Jr")
+            .withNickName("Dave").withTitle("Mini Super").withCompany("Super Company")
+            .withAddress("1234 200th WE apt123 City");
     app.contact().personalInfo(contact);
     app.contact().primaryContacts(new ContactData()
-            .withHome("123 123 11 11").withMobile("456 456 56 56").withWork("789 789 99 99")
-            .withFax("369 369 69 69").withEmail1("test@test.com").withEmail2("protest@protest.com")
+            .withHome("111 111 11 11").withMobile("222 222 22 22").withWork("333 333 33 33")
+            .withFax("444 444 44 44").withEmail1("test@test.com").withEmail2("protest@protest.com")
             .withEmail3("tester@tester.com").withHomePage("www.tester.com").withGroup("test1"), true);
     app.contact().secondaryContacts(new ContactData()
-            .withAddress2("new nowhere").withPhone2("741 741 14 14").withNotes("dont ring"));
-    Set<ContactData> after = app.contact().all();
-    Assert.assertEquals(after.size(), before.size() + 1);
-    contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt());
-    before.add(contact);
-    Assert.assertEquals(before, after);
+            .withAddress2("new nowhere").withPhone2("666 666 66 66").withNotes("no trespassing"));
+    Contacts after = app.contact().all();
+    assertThat(after.size(), equalTo(before.size() + 1));
+    assertThat(after, equalTo(
+            before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
   }
 }
