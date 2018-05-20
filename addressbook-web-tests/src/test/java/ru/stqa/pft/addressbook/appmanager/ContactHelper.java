@@ -60,6 +60,8 @@ public class ContactHelper extends HelperBase {
 
     type(By.name("fax"), contactData.getFax());
 
+
+
     if (creation) {
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
 
@@ -81,9 +83,12 @@ public class ContactHelper extends HelperBase {
 
     type(By.name("title"), contactData.getTitle());
 
+    attach(By.name("photo"),contactData.getPhoto());
+
     type(By.name("company"), contactData.getCompany());
 
     type(By.name("address"), contactData.getAddress());
+
 
   }
 
