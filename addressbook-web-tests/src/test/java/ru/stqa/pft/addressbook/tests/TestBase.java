@@ -5,9 +5,21 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import ru.stqa.pft.addressbook.appmanager.ApplicationManager;
 
-public class TestBase {
+import java.io.IOException;
 
-  protected static final ApplicationManager app = new ApplicationManager(BrowserType.FIREFOX);
+
+public class TestBase  {
+
+  public static ApplicationManager app;
+
+  {
+    try {
+      app = new ApplicationManager(System.getProperty("browser", BrowserType.FIREFOX));
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
 
   @BeforeSuite
   public void setUp() throws Exception {
