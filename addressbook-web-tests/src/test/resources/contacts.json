@@ -25,23 +25,5 @@
     "title": "Mini Super 2",
     "company": "Super Company 2",
     "address": "1234 200th WE apt123 City 2"
-  },
-  {
-    "firstName": "Red 3",
-    "middleName": "Jr 3",
-    "lastName": "Yellow 3",
-    "nickName": "Dave 3",
-    "title": "Mini Super 3",
-    "company": "Super Company 3",
-    "address": "1234 200th WE apt123 City 3"
-  },
-  {
-    "firstName": "Red 4",
-    "middleName": "Jr 4",
-    "lastName": "Yellow 4",
-    "nickName": "Dave 4",
-    "title": "Mini Super 4",
-    "company": "Super Company 4",
-    "address": "1234 200th WE apt123 City 4"
   }
 ]

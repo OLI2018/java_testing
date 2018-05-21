@@ -89,7 +89,6 @@ public class ContactHelper extends HelperBase {
 
     type(By.name("address"), contactData.getAddress());
 
-
   }
 
   public void secondaryContacts(ContactData contactData) {
