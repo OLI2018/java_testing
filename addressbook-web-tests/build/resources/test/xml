@@ -1,0 +1,92 @@
+<list>
+  <ru.stqa.pft.addressbook.model.ContactData>
+    <firstName>Red 0</firstName>
+    <middleName>Jr 0</middleName>
+    <lastName>Yellow 0</lastName>
+    <nickName>Dave 0</nickName>
+    <title>Mini Super 0</title>
+    <company>Super Company 0</company>
+    <address>1234 200th WE apt123 City 0</address>
+    <id>2147483647</id>
+  </ru.stqa.pft.addressbook.model.ContactData>
+  <ru.stqa.pft.addressbook.model.ContactData>
+    <firstName>Red 1</firstName>
+    <middleName>Jr 1</middleName>
+    <lastName>Yellow 1</lastName>
+    <nickName>Dave 1</nickName>
+    <title>Mini Super 1</title>
+    <company>Super Company 1</company>
+    <address>1234 200th WE apt123 City 1</address>
+    <id>2147483647</id>
+  </ru.stqa.pft.addressbook.model.ContactData>
+  <ru.stqa.pft.addressbook.model.ContactData>
+    <firstName>Red 2</firstName>
+    <middleName>Jr 2</middleName>
+    <lastName>Yellow 2</lastName>
+    <nickName>Dave 2</nickName>
+    <title>Mini Super 2</title>
+    <company>Super Company 2</company>
+    <address>1234 200th WE apt123 City 2</address>
+    <id>2147483647</id>
+  </ru.stqa.pft.addressbook.model.ContactData>
+  <ru.stqa.pft.addressbook.model.ContactData>
+    <firstName>Red 3</firstName>
+    <middleName>Jr 3</middleName>
+    <lastName>Yellow 3</lastName>
+    <nickName>Dave 3</nickName>
+    <title>Mini Super 3</title>
+    <company>Super Company 3</company>
+    <address>1234 200th WE apt123 City 3</address>
+    <id>2147483647</id>
+  </ru.stqa.pft.addressbook.model.ContactData>
+  <ru.stqa.pft.addressbook.model.ContactData>
+    <firstName>Red 4</firstName>
+    <middleName>Jr 4</middleName>
+    <lastName>Yellow 4</lastName>
+    <nickName>Dave 4</nickName>
+    <title>Mini Super 4</title>
+    <company>Super Company 4</company>
+    <address>1234 200th WE apt123 City 4</address>
+    <id>2147483647</id>
+  </ru.stqa.pft.addressbook.model.ContactData>
+  <ru.stqa.pft.addressbook.model.ContactData>
+    <firstName>Red 5</firstName>
+    <middleName>Jr 5</middleName>
+    <lastName>Yellow 5</lastName>
+    <nickName>Dave 5</nickName>
+    <title>Mini Super 5</title>
+    <company>Super Company 5</company>
+    <address>1234 200th WE apt123 City 5</address>
+    <id>2147483647</id>
+  </ru.stqa.pft.addressbook.model.ContactData>
+  <ru.stqa.pft.addressbook.model.ContactData>
+    <firstName>Red 6</firstName>
+    <middleName>Jr 6</middleName>
+    <lastName>Yellow 6</lastName>
+    <nickName>Dave 6</nickName>
+    <title>Mini Super 6</title>
+    <company>Super Company 6</company>
+    <address>1234 200th WE apt123 City 6</address>
+    <id>2147483647</id>
+  </ru.stqa.pft.addressbook.model.ContactData>
+  <ru.stqa.pft.addressbook.model.ContactData>
+    <firstName>Red 7</firstName>
+    <middleName>Jr 7</middleName>
+    <lastName>Yellow 7</lastName>
+    <nickName>Dave 7</nickName>
+    <title>Mini Super 7</title>
+    <company>Super Company 7</company>
+    <address>1234 200th WE apt123 City 7</address>
+    <id>2147483647</id>
+  </ru.stqa.pft.addressbook.model.ContactData>
+  <ru.stqa.pft.addressbook.model.ContactData>
+    <firstName>Red 8</firstName>
+    <middleName>Jr 8</middleName>
+    <lastName>Yellow 8</lastName>
+    <nickName>Dave 8</nickName>
+    <title>Mini Super 8</title>
+    <company>Super Company 8</company>
+    <address>1234 200th WE apt123 City 8</address>
+    <id>2147483647</id>
+  </ru.stqa.pft.addressbook.model.ContactData>
+</list>
