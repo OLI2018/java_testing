@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.stqa.pft.addressbook.tests.ContactInfoTests" tests="3" skipped="0" failures="0" errors="0" timestamp="2018-05-22T01:11:34" hostname="Oleg" time="13.069">
+  <properties/>
+  <testcase name="testContactAddress" classname="ru.stqa.pft.addressbook.tests.ContactInfoTests" time="2.901"/>
+  <testcase name="testContactEmails" classname="ru.stqa.pft.addressbook.tests.ContactInfoTests" time="2.755"/>
+  <testcase name="testContactPhones" classname="ru.stqa.pft.addressbook.tests.ContactInfoTests" time="2.559"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
