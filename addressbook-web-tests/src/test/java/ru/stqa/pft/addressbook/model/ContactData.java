@@ -1,17 +1,22 @@
 package ru.stqa.pft.addressbook.model;
 
 import com.google.gson.annotations.Expose;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
 import java.io.File;
 import java.util.Objects;
-
+@Entity
+@Table(name = "addressbook")
 public class ContactData {
 
   @Expose
+  @Column(name = "firstname")
   private String firstName;
   @Expose
   private String middleName;
   @Expose
+  @Column(name = "lastname")
   private String lastName;
   @Expose
   private String nickName;
@@ -20,36 +25,56 @@ public class ContactData {
   @Expose
   private String company;
   @Expose
+  @Type(type = "text")
   private String address;
-
+  @Id
+  @Column(name = "id")
   private int id = Integer.MAX_VALUE;
-
+  @Transient
   private String allPhones;
+  @Transient
   private String allEmails;
+  @Transient
   private String addressContact;
-  private File photo;
+  @Column(name = "photo")
+  @Type(type = "text")
+  private String photo;
 
+  @Column(name = "home")
+  @Type(type = "text")
   private String home;
 
   public File getPhoto() {
-    return photo;
+    return new File (photo);
   }
 
   public ContactData withPhoto(File photo) {
-    this.photo = photo;
+    this.photo = photo.getPath();
     return this;
   }
-
+  @Column(name = "mobile")
+  @Type(type = "text")
   private String mobile;
+  @Column(name = "work")
+  @Type(type = "text")
   private String work;
+  @Transient
   private String fax;
+  @Transient
   private String email1;
+  @Transient
   private String email2;
+  @Transient
   private String email3;
+  @Transient
   private String homePage;
+  @Transient
   private String group;
+  @Type(type = "text")
   private String address2;
+  @Transient
   private String phone2;
+  @Transient
   private String notes;
 
   @Override
