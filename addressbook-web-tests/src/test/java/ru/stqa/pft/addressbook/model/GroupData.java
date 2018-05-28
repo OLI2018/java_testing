@@ -43,7 +43,6 @@ public class GroupData {
   @Expose
   @Column(name = "group_header")
   @Type(type = "text")
-
   private String header;
   @Expose
   @Column(name = "group_footer")

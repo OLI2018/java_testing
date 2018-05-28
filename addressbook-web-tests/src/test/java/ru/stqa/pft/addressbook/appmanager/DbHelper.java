@@ -35,6 +35,17 @@ public class DbHelper {
     return new Groups(result);
 
   }
+
+//  public Groups groups() { contacts here
+//
+//    Session session = sessionFactory.openSession();
+//    session.beginTransaction();
+//    List<GroupData> result = session.createQuery("from GroupData").list();
+//    session.getTransaction().commit();
+//    session.close();
+//    return new Groups(result);
+//
+//  }
 }
 
 
