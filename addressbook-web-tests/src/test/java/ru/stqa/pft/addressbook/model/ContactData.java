@@ -22,6 +22,28 @@ public class ContactData {
   private String nickName;
   @Expose
   private String title;
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+    ContactData that = (ContactData) o;
+    return id == that.id &&
+            Objects.equals(firstName, that.firstName) &&
+            Objects.equals(middleName, that.middleName) &&
+            Objects.equals(lastName, that.lastName) &&
+            Objects.equals(nickName, that.nickName) &&
+            Objects.equals(title, that.title) &&
+            Objects.equals(company, that.company) &&
+            Objects.equals(address, that.address);
+  }
+
+  @Override
+  public int hashCode() {
+
+    return Objects.hash(firstName, middleName, lastName, nickName, title, company, address, id);
+  }
+
   @Expose
   private String company;
   @Expose
@@ -79,22 +101,6 @@ public class ContactData {
   private String phone2;
   @Transient
   private String notes;
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-    ContactData that = (ContactData) o;
-    return id == that.id &&
-            Objects.equals(firstName, that.firstName) &&
-            Objects.equals(lastName, that.lastName);
-  }
-
-  @Override
-  public int hashCode() {
-
-    return Objects.hash(firstName, lastName, id);
-  }
 
   public int getId() {
     return id;
