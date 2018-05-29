@@ -13,19 +13,18 @@ public class ContactModificationTests extends TestBase {
 
   @BeforeMethod
   public void ensurePreconditions() {
+
     app.goTo().gotoHomePage();
-    if (app.contact().all().size() == 0) {
+    if (app.db().contacts().size() == 0) {
       app.contact().addNew();
       app.contact().personalInfo(new ContactData()
-              .withFirstName("Bob").withLastName("Logan").withMiddleName("V")
-              .withNickName("BigB").withTitle("No Title").withCompany("remote position")
+              .withFirstName("New").withLastName("Contact").withMiddleName("If")
+              .withNickName("No").withTitle("No Title").withCompany("remote position")
               .withAddress("0987 123 St W Road Town"));
-
       app.contact().primaryContacts(new ContactData()
               .withHomePhone("4444444444").withMobilePhone("6666666666").withWorkPhone("8888888888")
               .withFax("0000000000").withEmail_1("mail1@test.com").withEmail_2("mail2t@protest.com")
               .withEmail_3("mail3@tester.com").withHomePage("www.tester.com").withGroup("test1"), true);
-
       app.contact().secondaryContacts(new ContactData()
               .withAddress2("Moscow").withPhone2(null).withNotes("Super Buzzyyyyy"));
     }
@@ -33,12 +32,11 @@ public class ContactModificationTests extends TestBase {
 
   @Test
   public void testContactModification() {
-
-    Contacts before = app.contact().all();
+    Contacts before = app.db().contacts();
     ContactData modifiedContact = before.iterator().next();
     ContactData contact = new ContactData()
-            .withId(modifiedContact.getId()).withFirstName("Tom").withLastName("Ross")
-            .withMiddleName("Wally").withNickName("Rose").withTitle("VP")
+            .withId(modifiedContact.getId()).withFirstName("ZERO").withLastName("BIG")
+            .withMiddleName("Daddy").withNickName("Red").withTitle("VP")
             .withCompany("NoName").withAddress("NoAddress");
     app.contact().modifyTest(contact);
     app.contact().personalInfo(contact);
@@ -49,7 +47,7 @@ public class ContactModificationTests extends TestBase {
     app.contact().secondaryContacts(new ContactData()
             .withAddress2("NoWhere").withPhone2(null).withNotes("Out of order"));
     app.contact().updateEditedContact();
-    Contacts after = app.contact().all();
+    Contacts after = app.db().contacts();
     assertEquals(after.size(), before.size());
     assertThat(after, equalTo(before.without(modifiedContact).withAdded(contact)));
   }

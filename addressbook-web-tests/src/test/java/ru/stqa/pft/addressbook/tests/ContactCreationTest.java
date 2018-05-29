@@ -37,8 +37,7 @@ public class ContactCreationTest extends TestBase {
 
   @Test(dataProvider = "validContactsFromJson")
   public void testContactCreationTest(ContactData contact) {
-
-    Contacts before = app.contact().all();
+    Contacts before = app.db().contacts();
     app.contact().addNew();
     app.contact().personalInfo(contact);
     app.contact().primaryContacts(new ContactData()
@@ -47,7 +46,7 @@ public class ContactCreationTest extends TestBase {
             .withEmail_3("tester@tester.com").withHomePage("www.tester.com").withGroup("test1"), true);
     app.contact().secondaryContacts(new ContactData()
             .withAddress2("new nowhere").withPhone2(null).withNotes("no trespassing"));
-    Contacts after = app.contact().all();
+    Contacts after = app.db().contacts();
     assertThat(after.size(), equalTo(before.size() + 1));
     assertThat(after, equalTo(
             before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));

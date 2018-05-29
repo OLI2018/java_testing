@@ -36,6 +36,8 @@ public class ContactData {
   private String allEmails;
   @Transient
   private String addressContact;
+
+  @Transient
   @Column(name = "photo")
   @Type(type = "text")
   private String photo;
@@ -52,6 +54,7 @@ public class ContactData {
     this.photo = photo.getPath();
     return this;
   }
+
   @Column(name = "mobile")
   @Type(type = "text")
   private String mobile;

@@ -16,7 +16,7 @@ public class ContactInfoTests extends TestBase {
   @BeforeMethod
   public void ensurePreconditionsContactInfoTest() {
     app.goTo().gotoHomePage();
-    if (app.contact().all().size() == 0) {
+    if (app.db().contacts().size() == 0) {
       app.contact().addNew();
       app.contact().personalInfo(new ContactData()
               .withFirstName("David").withLastName("Gross").withMiddleName("Jr")

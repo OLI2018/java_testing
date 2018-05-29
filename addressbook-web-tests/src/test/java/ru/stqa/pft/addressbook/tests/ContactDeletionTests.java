@@ -14,28 +14,28 @@ public class ContactDeletionTests extends TestBase {
   @BeforeMethod
   public void ensurePreconditions() {
     app.goTo().gotoHomePage();
-    if (app.contact().all().size() == 0) {
+    if (app.db().contacts().size() == 0) {
       app.contact().addNew();
       app.contact().personalInfo(new ContactData()
-              .withFirstName("David").withLastName("Gross").withMiddleName("Jr")
-              .withNickName("Dave").withTitle("Mini Super").withCompany("Super Company")
-              .withAddress("1234 200th WE apt123 City"));
-     app.contact().primaryContacts(new ContactData()
-             .withHomePhone("1111111111").withMobilePhone("2222222222").withWorkPhone("3333333333")
-             .withFax("4444444444").withEmail_1("test@test.com").withEmail_2("protest@protest.com")
-             .withEmail_3("tester@tester.com").withHomePage("www.tester.com").withGroup("test1"), true);
+              .withFirstName("New").withLastName("Contact").withMiddleName("If")
+              .withNickName("No").withTitle("No Title").withCompany("remote position")
+              .withAddress("0987 123 St W Road Town"));
+      app.contact().primaryContacts(new ContactData()
+              .withHomePhone("4444444444").withMobilePhone("6666666666").withWorkPhone("8888888888")
+              .withFax("0000000000").withEmail_1("mail1@test.com").withEmail_2("mail2t@protest.com")
+              .withEmail_3("mail3@tester.com").withHomePage("www.tester.com").withGroup("test1"), true);
       app.contact().secondaryContacts(new ContactData()
-              .withAddress2("new nowhere").withPhone2(null).withNotes("no trespassing"));
+              .withAddress2("Moscow").withPhone2(null).withNotes("Super Buzzyyyyy"));
     }
   }
 
   @Test
   public void testContactDeletion() throws InterruptedException {
-    Contacts before = app.contact().all();
+    Contacts before = app.db().contacts();
     ContactData deletedContact = before.iterator().next();
     app.contact().delete(deletedContact);
     app.goTo().gotoHomePage();
-    Contacts after = app.contact().all();
+    Contacts after = app.db().contacts();
     assertEquals(after.size(), before.size() - 1);
     assertThat(after, equalTo(before.without(deletedContact)));
   }
