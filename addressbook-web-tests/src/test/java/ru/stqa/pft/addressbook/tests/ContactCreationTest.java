@@ -6,6 +6,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
 import ru.stqa.pft.addressbook.model.Contacts;
+import ru.stqa.pft.addressbook.model.GroupData;
 import ru.stqa.pft.addressbook.model.Groups;
 
 import java.io.BufferedReader;
@@ -38,6 +39,12 @@ public class ContactCreationTest extends TestBase {
 
   @Test(dataProvider = "validContactsFromJson")
   public void testContactCreationTest(ContactData contact) {
+
+    if (app.db().groups().size() == 0) { //if there is no group, create new group
+      app.goTo().groupPage();
+      app.group().create(new GroupData().withName("test1"));
+    }
+
     Contacts before = app.db().contacts();
     Groups groups = app.db().groups();
     app.contact().addNew();
@@ -46,12 +53,14 @@ public class ContactCreationTest extends TestBase {
             .withHomePhone("111 111 11 11").withMobilePhone("222 222 22 22").withWorkPhone("333 333 33 33")
             .withFax("444 444 44 44").withEmail_1("test@test.com").withEmail_2("protest@protest.com")
             .withEmail_3("tester@tester.com").withHomePage("www.tester.com").inGroup(groups.iterator().next()), true);
+
     app.contact().secondaryContacts(new ContactData()
             .withAddress2("new nowhere").withPhone2(null).withNotes("no trespassing"));
     Contacts after = app.db().contacts();
     assertThat(after.size(), equalTo(before.size() + 1));
     assertThat(after, equalTo(
             before.withAdded(contact.withId(after.stream().mapToInt((c) -> c.getId()).max().getAsInt()))));
+    verifyContactlistInUi();
   }
 
   @Test(enabled = false)

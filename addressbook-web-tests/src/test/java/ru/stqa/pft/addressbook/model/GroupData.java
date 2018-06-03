@@ -53,6 +53,8 @@ public class GroupData {
 
   public Set<ContactData> getContacts() {
     return contacts;
+
+//    return new Contacts(contacts);
   }
 
   public GroupData withId(int id) {

@@ -10,7 +10,7 @@ public class DbConnectionTest {
 
   @Test
 
-  public void testDbConnection () {
+  public void testDbConnection() {
 
     Connection conn = null;
 

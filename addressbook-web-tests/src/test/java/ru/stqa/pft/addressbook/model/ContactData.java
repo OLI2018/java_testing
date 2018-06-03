@@ -4,7 +4,6 @@ import com.google.gson.annotations.Expose;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import javax.swing.*;
 import java.io.File;
 import java.util.HashSet;
 import java.util.Objects;
@@ -73,7 +72,7 @@ public class ContactData {
   private String home;
 
   public File getPhoto() {
-    return new File (photo);
+    return new File(photo);
   }
 
   public ContactData withPhoto(File photo) {
@@ -122,7 +121,7 @@ public class ContactData {
   }
 
   public Groups getGroups() {
-    return new Groups (groups);
+    return new Groups(groups);
   }
 
   @Override
@@ -134,7 +133,7 @@ public class ContactData {
             '}';
   }
 
-  public ContactData withId (int id) {
+  public ContactData withId(int id) {
     this.id = id;
     return this;
   }
