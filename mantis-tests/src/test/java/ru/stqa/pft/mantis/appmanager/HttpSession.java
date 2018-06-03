@@ -10,9 +10,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.client.LaxRedirectStrategy;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
-import sun.net.www.http.HttpClient;
 
-import java.io.Closeable;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,8 +38,6 @@ public class HttpSession {
     CloseableHttpResponse response = httpclient.execute(post); // send request to server and get a response
     String body = geTextFrom(response);
     return body.contains(String.format("<span class=\"label hidden-xs label-default arrowed\">%s</span>", username));
-
-
   }
 
   private String geTextFrom(CloseableHttpResponse response) throws IOException {
@@ -50,7 +46,6 @@ public class HttpSession {
     } finally {
       response.close();
     }
-
   }
 
   public boolean isLoggedInAs(String username) throws IOException {
@@ -58,7 +53,6 @@ public class HttpSession {
     CloseableHttpResponse response = httpclient.execute(get); // execute GET and receive response
     String body = geTextFrom(response);
     return body.contains(String.format("<span class=\"label hidden-xs label-default arrowed\">%s</span>", username));
-
   }
 }
 
