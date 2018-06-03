@@ -2,7 +2,7 @@ package ru.stqa.pft.mantis.tests;
 
 import org.testng.annotations.Test;
 
-public class RegestrationTests extends TestBase {
+public class RegistrationTest extends TestBase {
 
   @Test
   public void testRegistration() {
