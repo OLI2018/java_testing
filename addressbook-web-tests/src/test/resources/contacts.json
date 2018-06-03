@@ -1,6 +1,6 @@
 [
   {
-    "firstName": "Red 0",
+    "firstName": "Red ZZZ",
     "middleName": "Jr 0",
     "lastName": "Yellow 0",
     "nickName": "Dave 0",
@@ -9,21 +9,12 @@
     "address": "1234 200th WE apt123 City 0"
   },
   {
-    "firstName": "Red 1",
+    "firstName": "Red XXX",
     "middleName": "Jr 1",
     "lastName": "Yellow 1",
     "nickName": "Dave 1",
     "title": "Mini Super 1",
     "company": "Super Company 1",
     "address": "1234 200th WE apt123 City 1"
-  },
-  {
-    "firstName": "Red 2",
-    "middleName": "Jr 2",
-    "lastName": "Yellow 2",
-    "nickName": "Dave 2",
-    "title": "Mini Super 2",
-    "company": "Super Company 2",
-    "address": "1234 200th WE apt123 City 2"
   }
 ]

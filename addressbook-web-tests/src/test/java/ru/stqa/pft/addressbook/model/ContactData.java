@@ -337,6 +337,10 @@ public class ContactData {
     return this;
   }
 
+  public ContactData inGroup(GroupData group) {
+    groups.add(group);
+    return this;
+  }
 }
 
 

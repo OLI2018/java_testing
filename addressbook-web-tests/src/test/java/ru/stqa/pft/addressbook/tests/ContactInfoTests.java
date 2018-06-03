@@ -3,6 +3,7 @@ package ru.stqa.pft.addressbook.tests;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.pft.addressbook.model.ContactData;
+import ru.stqa.pft.addressbook.model.Groups;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
@@ -17,6 +18,7 @@ public class ContactInfoTests extends TestBase {
   public void ensurePreconditionsContactInfoTest() {
     app.goTo().gotoHomePage();
     if (app.db().contacts().size() == 0) {
+      Groups groups = app.db().groups();
       app.contact().addNew();
       app.contact().personalInfo(new ContactData()
               .withFirstName("David").withLastName("Gross").withMiddleName("Jr")
@@ -25,7 +27,7 @@ public class ContactInfoTests extends TestBase {
       app.contact().primaryContacts(new ContactData()
               .withHomePhone("1111111111").withMobilePhone("2222222222").withWorkPhone("3333333333")
               .withFax("4444444444").withEmail_1("test@test.com").withEmail_2("protest@protest.com")
-              .withEmail_3("tester@tester.com").withHomePage("www.tester.com").withGroup("test1"), true);
+              .withEmail_3("tester@tester.com").withHomePage("www.tester.com").inGroup(groups.iterator().next()), true);
       app.contact().secondaryContacts(new ContactData()
               .withAddress2("new nowhere").withPhone2(null).withNotes("no trespassing"));
     }

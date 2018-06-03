@@ -18,7 +18,6 @@ public class GroupDeletionTests extends TestBase {
     }
   }
 
-
   @Test
   public void testGroupDeletionTests() {
     Groups before = app.db().groups();
