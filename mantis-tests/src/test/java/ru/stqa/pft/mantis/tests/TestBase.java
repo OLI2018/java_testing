@@ -24,13 +24,7 @@ public class TestBase {
   @BeforeSuite
   public void setUp() throws Exception {
     app.init();
-
-    File file = new File("C:\\Users\\OI\\Documents\\GitHub\\java_testing\\mantis-tests\\src\\test\\resources\\config_inc.php");
-    String target = "C:\\xampp\\htdocs\\mantisbt-2.14.0\\config\\config_inc.php";
-    String backup = "C:\\xampp\\htdocs\\mantisbt-2.14.0\\config\\config_inc.php.bak";
-
-    app.ftp().upload(file, target, backup);
-
+    app.ftp().upload(new File("src/test/resources/config_inc.php"), "config_inc.php", "config_inc.php.bak");
   }
 
   @AfterSuite
