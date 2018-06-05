@@ -16,7 +16,6 @@ public class FtpHelper {
     ftp = new FTPClient();
   }
 
-
   public void upload(File file, String target, String backup) throws IOException { //upload a new file and rename the current file
     // file - локальный файл будет загружен на удаленную машину, target - имя удаленного файла, backup - имя резервной копии, если удаленный файл уже есть
     ftp.connect(app.getProperty("ftp.host"));
