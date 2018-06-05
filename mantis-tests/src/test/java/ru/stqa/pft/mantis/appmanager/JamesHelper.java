@@ -1,18 +1,27 @@
 package ru.stqa.pft.mantis.appmanager;
 
+import org.apache.commons.net.telnet.TelnetClient;
+import ru.stqa.pft.mantis.model.MailMessage;
+
+import javax.mail.*;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintStream;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class JamesHelper {
 
-    private ApplicationManager app;
+  private ApplicationManager app;
 
-    private TelnetClient telnet;
-    private InputStream in;
-    private PrintStream out;
+  private TelnetClient telnet;
+  private InputStream in;
+  private PrintStream out;
 
-    private Session mailSession;
-    private Store store;
-    private String mailserver;
-
-
+  private Session mailSession;
+  private Store store;
+  private String mailserver;
 
   public JamesHelper(ApplicationManager app) {
     this.app = app;
@@ -74,7 +83,7 @@ public class JamesHelper {
     readUntil("Welcome " + login + ". HELP for a list of commands");
   }
 
-  private String readUntil (String pattern){
+  private String readUntil(String pattern) {
     try {
       char lastChar = pattern.charAt(pattern.length() - 1);
       StringBuffer sb = new StringBuffer();
@@ -95,7 +104,7 @@ public class JamesHelper {
     return null;
   }
 
-  private void write (String value) {
+  private void write(String value) {
     try {
       out.println(value);
       out.flush();
@@ -105,11 +114,11 @@ public class JamesHelper {
     }
   }
 
-  private void closeTelnetSession () {
+  private void closeTelnetSession() {
     write("quit");
   }
 
-  public void drainEmail (String username, String password) throws MessagingException {
+  public void drainEmail(String username, String password) throws MessagingException {
     Folder inbox = openInbox(username, password);
     for (Message message : inbox.getMessages()) {
       message.setFlag(Flags.Flag.DELETED, true);
@@ -117,7 +126,7 @@ public class JamesHelper {
     closeFolder(inbox);
   }
 
-  private void closeFolder (Folder folder) throws MessagingException {
+  private void closeFolder(Folder folder) throws MessagingException {
     folder.close(true);
     store.close();
 
@@ -166,6 +175,5 @@ public class JamesHelper {
     }
   }
 
+}
 
-}
-}
