@@ -81,12 +81,11 @@ public class ApplicationManager {
     return wd;
   }
 
-public MailHelper mail () {
+  public MailHelper mail() {
     if (mailHelper == null) {
       mailHelper = new MailHelper(this);
     }
     return mailHelper;
-}
-
+  }
 
 }

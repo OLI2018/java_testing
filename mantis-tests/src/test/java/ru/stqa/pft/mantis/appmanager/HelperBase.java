@@ -9,19 +9,18 @@ import java.util.NoSuchElementException;
 
 public class HelperBase {
 
-    protected ApplicationManager app;
-    protected WebDriver wd;
+  protected ApplicationManager app;
+  protected WebDriver wd;
 
-    public HelperBase(ApplicationManager app) {
-      this.app = app;
-      this.wd = app.getDriver();
-    }
+  public HelperBase(ApplicationManager app) {
+    this.app = app;
+    this.wd = app.getDriver();
+  }
 
 
   protected void click(By locator) {
     wd.findElement(locator).click();
   }
-
 
   protected void type(By locator, String text) {
     click(locator);
@@ -34,49 +33,37 @@ public class HelperBase {
     }
   }
 
+  public HelperBase(WebDriver wd) {
+    this.wd = wd;
+  }
 
-
-
-
-
-
-
-
-    public HelperBase(WebDriver wd) {
-      this.wd = wd;
-    }
-
-
-
-
-
-    protected void attach(By locator, File file) {
-      if (file != null) {
-        wd.findElement(locator).sendKeys(file.getAbsolutePath());
-      }
-    }
-
-    public boolean isAlertPresent() {
-      try {
-        wd.switchTo().alert();
-        return true;
-      } catch (NoAlertPresentException e) {
-        return false;
-      }
-
-    }
-
-    public void choiceConfirmation() {
-      wd.switchTo().alert().accept();
-    }
-
-    protected boolean isElementPresent(By locator) {
-      try {
-        wd.findElement(locator);
-        return true;
-      }catch (NoSuchElementException ex) {
-        return false;
-      }
+  protected void attach(By locator, File file) {
+    if (file != null) {
+      wd.findElement(locator).sendKeys(file.getAbsolutePath());
     }
   }
+
+  public boolean isAlertPresent() {
+    try {
+      wd.switchTo().alert();
+      return true;
+    } catch (NoAlertPresentException e) {
+      return false;
+    }
+
+  }
+
+  public void choiceConfirmation() {
+    wd.switchTo().alert().accept();
+  }
+
+  protected boolean isElementPresent(By locator) {
+    try {
+      wd.findElement(locator);
+      return true;
+    } catch (NoSuchElementException ex) {
+      return false;
+    }
+  }
+}
 
