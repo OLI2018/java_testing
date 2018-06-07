@@ -25,6 +25,11 @@ public class ApplicationManager {
   private MailHelper mailHelper;
   private JamesHelper jamesHelper;
 
+  private ResetHelper resetHelper;
+  private DbHelper DbHelper;
+
+
+
   public ApplicationManager(String browser) throws IOException {
     this.browser = browser;
     properties = new Properties();
@@ -95,5 +100,22 @@ public JamesHelper james () {
     }
     return jamesHelper;
   }
+
+
+
+  public ResetHelper reset() {
+    if (resetHelper == null) {
+      resetHelper = new ResetHelper(this);
+    }
+    return resetHelper;
+  }
+
+  public DbHelper db() {
+    if (DbHelper == null) {
+      DbHelper = new DbHelper(this);
+    }
+    return DbHelper;
+  }
+
 
 }
