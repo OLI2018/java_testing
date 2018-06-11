@@ -67,7 +67,7 @@ public class JamesHelper {
       e.printStackTrace();
     }
 
-    //Don't no why it doesn't allow login at the first attempt
+    //Don't know why it doesn't allow login at the first attempt
     readUntil("Login id:");
     write("");
     readUntil("Password:");
@@ -134,7 +134,8 @@ public class JamesHelper {
 
   private Folder openInbox(String username, String password) throws MessagingException {
     store = mailSession.getStore("pop3");
-    store.connect(mailserver, 1100, username, password);
+//    store.connect(mailserver, 1100, username, password);
+    store.connect(mailserver, username, password);
     Folder folder = store.getDefaultFolder().getFolder("INBOX");
     folder.open(Folder.READ_WRITE);
     return folder;
