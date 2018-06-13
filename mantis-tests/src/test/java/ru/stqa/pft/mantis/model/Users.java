@@ -23,7 +23,6 @@ public class Users extends ForwardingSet<UserData> {
     Users users = new Users(this);
     users.add(user);
     return users;
-
   }
 
   public Users() {

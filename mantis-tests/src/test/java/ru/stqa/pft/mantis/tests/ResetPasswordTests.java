@@ -56,6 +56,5 @@ public class ResetPasswordTests extends TestBase {
   public void stopMailServer() {
     app.mail().stop();
   }
-
 }
 
