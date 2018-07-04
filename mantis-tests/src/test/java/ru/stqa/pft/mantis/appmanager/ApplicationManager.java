@@ -27,7 +27,7 @@ public class ApplicationManager {
 
   private ResetHelper resetHelper;
   private DbHelper DbHelper;
-
+  private SoapHelper soapHelper;
 
 
   public ApplicationManager(String browser) throws IOException {
@@ -94,13 +94,12 @@ public class ApplicationManager {
     return mailHelper;
   }
 
-public JamesHelper james () {
+  public JamesHelper james() {
     if (jamesHelper == null) {
       jamesHelper = new JamesHelper(this);
     }
     return jamesHelper;
   }
-
 
 
   public ResetHelper reset() {
@@ -117,5 +116,11 @@ public JamesHelper james () {
     return DbHelper;
   }
 
+  public SoapHelper soap() {
+    if (soapHelper == null) {
+      soapHelper = new SoapHelper(this);
+    }
+    return soapHelper;
+  }
 
 }
