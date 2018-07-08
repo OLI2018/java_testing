@@ -33,8 +33,9 @@ public class SoapTests extends TestBase {
 
   @Test
   public void testGetIssues() throws RemoteException, ServiceException, MalformedURLException {
-    int bugReportID = 0000002;
+    int bugReportID = 0000003;
     skipIfNotFixed(bugReportID);
     System.out.println("bugReportID status:  " + app.soap().getStatus(bugReportID));
+
   }
 }

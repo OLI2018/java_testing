@@ -14,13 +14,14 @@ import java.util.Set;
 
 import static org.testng.Assert.assertEquals;
 
-public class RestTests {
+public class RestTests extends TestBase {
+
 
   @Test
   public void testCreateIssue() throws IOException {
 
     Set<Issue> oldIssues = getIssues(); // get set of old issues
-    Issue newIssue = new Issue().withSubject("QWERTY").withDescription("XXXXXXX"); // create new issue - object
+    Issue newIssue = new Issue().withSubject("New Issue No Subject").withDescription("NoDescription"); // create new issue - object
     int issueId = createIssue(newIssue); //create new issue thru method and return id of newly created issue
     Set<Issue> newIssues = getIssues(); //get set of new issues including newly added one
     oldIssues.add(newIssue.withId(issueId)); // add new issue with id to old set to have the equal sets
@@ -37,7 +38,7 @@ public class RestTests {
   }
 
   private Executor getExecutor() {
-    return Executor.newInstance().auth("601f5dd9c548847641dc26728bc24eab", "");
+    return Executor.newInstance().auth("9ce546fce0651a16b0923818ce4e1254", "");
   }
 
   private int createIssue(Issue newIssue) throws IOException {
@@ -48,4 +49,13 @@ public class RestTests {
     JsonElement parsed = new JsonParser().parse(json);
     return parsed.getAsJsonObject().get("issue_id").getAsInt();
   }
+
+  @Test
+  public void getIssueStatus() throws IOException {
+
+    int bugReportID = 8;
+    skipIfNotFixed(bugReportID);
+    System.out.println("Issue Status: " + getIssueStatus(bugReportID) + " .Please proceed with testing");
+  }
 }
+

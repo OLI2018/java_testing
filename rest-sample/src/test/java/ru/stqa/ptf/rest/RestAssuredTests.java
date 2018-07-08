@@ -13,19 +13,19 @@ import java.util.Set;
 
 import static org.testng.Assert.assertEquals;
 
-public class RestAssuredTests {
+public class RestAssuredTests extends TestBase {
 
   @BeforeClass
   public void init() {
 
-    RestAssured.authentication = RestAssured.basic("8df242e4ddb24441bafd565ba8c81de9", "");
+    RestAssured.authentication = RestAssured.basic("9ce546fce0651a16b0923818ce4e1254", "");
   }
 
   @Test
   public void testCreateIssue() throws IOException {
 
     Set<Issue> oldIssues = getIssues(); // get set of old issues
-    Issue newIssue = new Issue().withSubject("QWERTY").withDescription("XXXXXXX"); // create new issue - object
+    Issue newIssue = new Issue().withSubject("New Issue-Report").withDescription("NoNameDescription"); // create new issue - object
     int issueId = createIssue(newIssue); //create new issue thru method and return id of newly created issue
     Set<Issue> newIssues = getIssues(); //get set of new issues including newly added one
     oldIssues.add(newIssue.withId(issueId)); // add new issue with id to old set to have the equal sets
